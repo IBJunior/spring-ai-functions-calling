@@ -9,7 +9,8 @@ import java.util.function.Function;
 
 @Service("getBudgetByDestinationAndNumberOfDays")
 @Description("get budget for a destination based on number days")
-public class BudgetByDestinationService implements Function<BudgetByDestinationService.DestinationBudgetRequest, BudgetByDestinationService.DestinationBudgetResponse> {
+public class BudgetByDestinationService implements Function<BudgetByDestinationService.DestinationBudgetRequest,
+        BudgetByDestinationService.DestinationBudgetResponse> {
     @Override
     public DestinationBudgetResponse apply(DestinationBudgetRequest destinationBudget) {
         if (destinationBudget.destination() == null) return new DestinationBudgetResponse(0L);
