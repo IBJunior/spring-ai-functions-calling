@@ -61,14 +61,14 @@ public class FunctionController {
     }
 
     @GetMapping("/flights")
-    public String getFlights(@RequestParam Long userId) {
+    public String getFlights(@RequestParam Long clientId) {
 
         // Create User Message
         UserMessage userMessage = new UserMessage(getFlightsPrompt);
 
         // Create System Message
         SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate(defaultSystemMessage);
-        Message systemMessage = systemPromptTemplate.createMessage(Map.of("userId", userId));
+        Message systemMessage = systemPromptTemplate.createMessage(Map.of("userId", clientId));
 
         Prompt prompt = new Prompt(List.of(userMessage, systemMessage), OpenAiChatOptions.builder()
                 .withFunction("getFlightsByUser")
